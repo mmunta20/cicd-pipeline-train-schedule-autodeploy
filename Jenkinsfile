@@ -83,7 +83,7 @@ pipeline {
             }
         }
     }
-    post{
+    post {
         cleanup {
                 withKubeCredentials(kubectlCredentials: [[caCertificate: '', clusterName: 'sample', contextName: '', credentialsId: 'kubelogin', namespace: '', serverUrl:'https://172.18.71.69:6443']]) {
                 sh 'curl -LO "https://storage.googleapis.com/kubernetes-release/release/v1.20.5/bin/linux/amd64/kubectl"'  
