@@ -91,7 +91,8 @@ pipeline {
                 sh './kubectl get nodes'
                 sh './kubectl apply -f train-schedule-kube-canary.yml'
                 sh './kubectl get pods'
-              )
-        }      
+                }   
+            }      
+        }
     }
 }
