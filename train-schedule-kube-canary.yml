@@ -34,7 +34,7 @@ spec:
     spec:
       containers:
       - name: train-schedule
-        image: $DOCKER_IMAGE_NAME:$BUILD_NUMBER
+        image: mmunta20/train-schedule
         ports:
         - containerPort: 8080
         livenessProbe:
