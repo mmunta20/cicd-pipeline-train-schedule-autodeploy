@@ -80,8 +80,19 @@ pipeline {
                 sh './kubectl get nodes'
                 sh './kubectl apply -f train-schedule-kube.yml'
                 sh './kubectl get pods'
+                }
             }
         }
     }
-   }
+     post {
+        cleanup {
+                withKubeCredentials(kubectlCredentials: [[caCertificate: '', clusterName: 'sample', contextName: '', credentialsId: 'kubelogin', namespace: '', serverUrl:'https://172.18.71.69:6443']]) {
+                sh 'curl -LO "https://storage.googleapis.com/kubernetes-release/release/v1.20.5/bin/linux/amd64/kubectl"'  
+                sh 'chmod u+x ./kubectl'  
+                sh './kubectl get nodes'
+                sh './kubectl apply -f train-schedule-kube-canary.yml'
+                sh './kubectl get pods'
+                }   
+           }      
+    }
 }
