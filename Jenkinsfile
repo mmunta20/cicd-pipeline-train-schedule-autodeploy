@@ -5,7 +5,7 @@ pipeline {
         DOCKER_IMAGE_NAME = "mmunta20/train-schedule"
         CANARY_REPLICAS = 0
     }
-     tools {JDK "JavaDK"}
+    tools {java "JavaDK"}
     stages {
        stage('Build') {
             steps {
